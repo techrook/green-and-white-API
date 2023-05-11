@@ -29,6 +29,17 @@ export interface Admin extends mongoose.Document {
     }
   })
 
+  AdminSchema.pre<Admin>(
+    'save',
+    async function(next) {
+        const user = this;
+        const hash = await bcrypt.hash(this.password, 10);
+  
+        this.password = hash;
+        next()
+    }
+  );
+
   const ADMIN = mongoose.model<Admin>("USERS", AdminSchema);
 
   export default ADMIN;
