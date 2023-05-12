@@ -6,8 +6,6 @@ import ADMIN, {Admin} from '../models/admin.model';
 
 class AdminAuth{
     public async signUp (adminData:Admin){
-        if(!adminData)throw new HttpException(400, `enter email and password`);
-
         const findAdmin = await ADMIN.findOne({email  : adminData.email})
         if(findAdmin) throw new HttpException(409, `${adminData.email} already exist.`);
 

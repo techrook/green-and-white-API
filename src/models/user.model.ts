@@ -1,13 +1,13 @@
 import mongoose, { Schema} from "mongoose";
 import bcrypt from 'bcrypt';
 
-export interface Admin extends mongoose.Document {
+export interface User extends mongoose.Document {
     email: string;
     password: string;
     isAdmin: boolean   
   }
 
-  const AdminSchema : Schema<Admin> = new Schema ({
+  const UserSchema : Schema<User> = new Schema ({
     email: {
       type: String,
       required: true,
@@ -24,12 +24,12 @@ export interface Admin extends mongoose.Document {
     },
     isAdmin:{
       type: Boolean,
-      default: true,
+      default: false,
 
     }
   })
 
-  AdminSchema.pre<Admin>(
+  UserSchema.pre<User>(
     'save',
     async function(next) {
         const user = this;
@@ -40,6 +40,6 @@ export interface Admin extends mongoose.Document {
     }
   );
 
-  const ADMIN = mongoose.model<Admin>("ADMIN", AdminSchema);
+  const USER = mongoose.model<User>("USERS", UserSchema)
 
-  export default ADMIN;
+  export default USER;
