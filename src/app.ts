@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { ErrorMiddleware } from './middlewares/error.middleware'; 
 import  connect  from './config/db.config';
-import adminAuthrouter from './routes/adminAuth.route';
 import userAuthRouter from './routes/userAuth.route';
+import regionRouter from './routes/region.route';
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
@@ -15,7 +15,7 @@ connect();
 const app = express();
 
 
-
+//middlewares
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
@@ -26,8 +26,8 @@ app.get("/", ( req: Request, res: Response) => {
 })
 
 //routes
-app.use('/admin', adminAuthrouter);
 app.use('/user', userAuthRouter);
+app.use('/region', regionRouter);
 
 app.use(ErrorMiddleware)
 

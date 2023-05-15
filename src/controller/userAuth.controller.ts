@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import UserAuth from '../services/userAuth.service';
-import { SignupUser } from '../interfaces/adminAuth.interface';
+import { SignupUser } from '../interfaces/auth.interface';
 
 const userAuth = new UserAuth();
 class UserController{

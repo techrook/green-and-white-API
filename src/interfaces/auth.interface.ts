@@ -2,14 +2,18 @@ import { Request } from 'express';
 
 export interface RequestWithUser extends Request {
     user: {
-      userId : string,
+      _id : string,
       email: string
     };
   
   }
   
   export interface JwtPayload {
-    userId: string
+    adminId: string
     email: string
   }
   
+  export interface SignupUser  {
+    email: string;
+    password: string;
+  }

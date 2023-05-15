@@ -3,8 +3,7 @@ import bcrypt from 'bcrypt';
 
 export interface User extends mongoose.Document {
     email: string;
-    password: string;
-    isAdmin: boolean   
+    password: string; 
   }
 
   const UserSchema : Schema<User> = new Schema ({
@@ -21,11 +20,6 @@ export interface User extends mongoose.Document {
       type: String,
       required: true,
       minlength: 6,
-    },
-    isAdmin:{
-      type: Boolean,
-      default: false,
-
     }
   })
 
