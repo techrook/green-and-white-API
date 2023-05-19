@@ -6,10 +6,6 @@ export interface State extends mongoose.Document {
     LGA: object[];
     latitude: number;
     longitude: number;
-    minLat: number;
-    minLong: number;
-    maxLat: number;
-    maxLong: number;
     region:Types.ObjectId ;
     number_of_LGA: number;
 }
@@ -32,22 +28,6 @@ const StateSchma: Schema<State> = new Schema({
         required: true
     },
     longitude:{
-        type: Number,
-        required: true
-    },
-    minLat:{
-        type: Number,
-        required: true
-    }, 
-    minLong:{
-        type: Number,
-        required: true
-    },
-    maxLat:{
-        type: Number,
-        required: true
-    },
-    maxLong:{
         type: Number,
         required: true
     },

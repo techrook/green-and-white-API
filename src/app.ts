@@ -3,6 +3,7 @@ import { ErrorMiddleware } from './middlewares/error.middleware';
 import  connect  from './config/db.config';
 import userAuthRouter from './routes/userAuth.route';
 import regionRouter from './routes/region.route';
+import stateRouter from './routes/state.route';
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
@@ -27,8 +28,8 @@ app.get("/", ( req: Request, res: Response) => {
 
 //routes
 app.use('/user', userAuthRouter);
-app.use('/region', regionRouter);
-
+app.use('/regions', regionRouter);
+app.use('/states', stateRouter);
 app.use(ErrorMiddleware)
 
 

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import StateService from '@/services/state.service'; 
+import StateService from '../services/state.service'; 
 
 const stateService = new StateService();
 class StateController{
@@ -24,6 +24,7 @@ class StateController{
 
     public get_A_state = async(req: Request, res: Response, next: NextFunction) => {
         try {
+            console.log(req.query.state)
             const state = await stateService.get_A_state(req.query.state)
             res.status(202).json({data: state})
         } catch (error) {
