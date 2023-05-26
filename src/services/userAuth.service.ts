@@ -1,33 +1,35 @@
-import bcrypt from 'bcrypt';
-import { sign } from 'jsonwebtoken';
-import { CONFIG } from '../config';
+import bcrypt from 'bcryptjs'
 import { HttpException } from '../exceptions/httpException';
 import USER,{User} from '../models/user.model';
+import genAPIKey from '../middlewares/generateApiKey.middleware';
 
 class UserAuth{
-    public async signUp(userData:User){
-        const findUser = await USER.findOne({email: userData.email })
+    public async signUp({username, password, API_KEY}){
+        const findUser = await USER.findOne({username: username })
 
-        if(findUser) throw new HttpException(409, `${userData.email} already exist.`);
+        if(findUser) throw new HttpException(409, `${username} already exist.`);
 
-        const newUser = await USER.create(userData)
+        const newUser = await USER.create({username, password, API_KEY})
+        
 
         return newUser
     }
 
-    public async login(userData: User){
+    public async login({username, password}){
 
-        const findUser = await USER.findOne({email: userData.email })
-        if(!findUser) throw new HttpException(404, `${userData.email} does not exist.`);
+        const findUser = await USER.findOne({username: username })
+        
+       
+        if(!findUser) throw new HttpException(404, `${username} does not exist.`);
+        const isPasswordMatching: boolean =  bcrypt.compareSync(password, findUser.password);
+        if(!isPasswordMatching) throw new HttpException(403,"wrong password, enter correct password. ");
 
-        const isPasswordMatching: boolean = await bcrypt.compare(userData.password, findUser.password);
-        if(!isPasswordMatching) throw new HttpException(406,  "wrong password, enter correct password. ");
+        const apikey = genAPIKey(15)
+        const updateUserKey = await USER.findByIdAndUpdate((findUser._id),{API_KEY: apikey});
+        const updateKeyUseage = await USER.findByIdAndUpdate((findUser._id), {max_key_useage: 30})
 
-        const token = sign({adminId: findUser._id, email: findUser.email},
-            CONFIG.SECRET_KEY,
-            {expiresIn: CONFIG.JWT_LIFESPAN});
 
-        return token
+        return apikey
     }
 }
 

@@ -1,13 +1,15 @@
 import mongoose, { Schema} from "mongoose";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs'
 
 export interface User extends mongoose.Document {
-    email: string;
-    password: string; 
+    username: string;
+    password: string;
+    API_KEY: string
+    max_key_useage: number 
   }
 
   const UserSchema : Schema<User> = new Schema ({
-    email: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -16,6 +18,15 @@ export interface User extends mongoose.Document {
       type: String,
       required: true,
       minlength: 6,
+    },
+    API_KEY: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    max_key_useage:{
+      type: Number,
+      default: 30
     }
   })
 
@@ -23,12 +34,16 @@ export interface User extends mongoose.Document {
     'save',
     async function(next) {
         const user = this;
-        const hash = await bcrypt.hash(this.password, 10);
+        const hash =  bcrypt.hashSync(this.password, 8);
   
         this.password = hash;
         next()
     }
   );
+
+ 
+
+
 
   const USER = mongoose.model<User>("USERS", UserSchema)
 

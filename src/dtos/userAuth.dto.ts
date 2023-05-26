@@ -2,10 +2,9 @@ import { IsEmail, IsString, IsNotEmpty, MinLength, MaxLength } from 'class-valid
 import { Trim } from "class-sanitizer";
 
 export class SignUpUserDto {
-    @IsEmail({}, { message: "Provided Email is not valid" })
     @Trim()
     @IsNotEmpty()
-    public email?: string;
+    public username?: string;
 
   @IsString()
   @IsNotEmpty()

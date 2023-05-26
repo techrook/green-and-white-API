@@ -9,11 +9,12 @@ export interface RequestWithUser extends Request {
   }
   
   export interface JwtPayload {
-    adminId: string
-    email: string
+    adminId: string;
+    email: string;
   }
   
   export interface SignupUser  {
-    email: string;
+    username: string;
     password: string;
+    API_KEY: string;
   }
