@@ -1,7 +1,9 @@
 import STATE,{State} from "../models/states.model";
 import { HttpException } from "../exceptions/httpException";
+
 class StateService{
     public async addState(stateData: State){
+        if(!stateData) throw new HttpException(404, `enter  state data`);
         const newState = await STATE.create(stateData)
 
         return newState
@@ -20,6 +22,60 @@ class StateService{
         if(!the_state) throw new HttpException(404, `state not found`);
 
         return the_state
+    }
+    public async get_NorthWest_states(){
+        
+        const states = await STATE.find({region:"6462b4b692eb5caec51d99ba" })
+        .populate( "region", {name: 1 })
+
+        if(!states) throw new HttpException(404, `states not found`);
+
+        return states
+    }
+    public async get_Northcentral_states(){
+        
+        const states = await STATE.find({region:"6462b4ce92eb5caec51d99bc" })
+        .populate( "region", {name: 1 })
+
+        if(!states) throw new HttpException(404, `states not found`);
+
+        return states
+    }
+    public async get_Northeast_states(){
+        
+        const states = await STATE.find({region:"6462b50d92eb5caec51d99be" })
+        .populate( "region", {name: 1 })
+
+        if(!states) throw new HttpException(404, `states not found`);
+
+        return states
+    }
+    public async get_southeast_states(){
+        
+        const states = await STATE.find({region:"6462b53192eb5caec51d99c0" })
+        .populate( "region", {name: 1 })
+
+        if(!states) throw new HttpException(404, `states not found`);
+
+        return states
+    }
+    public async get_southsouth_states(){
+        
+        const states = await STATE.find({region:"6462b5b092eb5caec51d99c2" })
+        .populate( "region", {name: 1 })
+
+        if(!states) throw new HttpException(404, `states not found`);
+
+        return states
+    }
+    public async get_southwest_states(){
+        
+        const states = await STATE.find({region:"6462b5c892eb5caec51d99c4" })
+        .populate( "region", {name: 1 })
+
+        if(!states) throw new HttpException(404, `states not found`);
+
+        return states
     }
 }
 
