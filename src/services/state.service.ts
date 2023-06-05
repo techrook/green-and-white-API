@@ -77,6 +77,19 @@ class StateService{
 
         return states
     }
+
+    public async find_state_by_coord({longitude, latitude}){
+
+            const state_lat = await STATE.findOne({latitude: latitude})
+            if(!state_lat) throw new HttpException(404, `enter correct coordinates`);
+
+            if(state_lat.longitude == longitude){
+                return state_lat
+            }
+            else{
+                throw new HttpException(404, `enter correct coordinates`);
+            }
+    }
 }
 
 

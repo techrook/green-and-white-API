@@ -14,6 +14,6 @@ stateRouter.get("/northeast",authorization, stateController.get_Northeast_states
 stateRouter.get("/southeast",authorization, stateController.get_southeast_states);
 stateRouter.get("/southsouth",authorization, stateController.get_southsouth_states);
 stateRouter.get("/southwest",authorization, stateController.get_southwest_states);
-
+stateRouter.get("/coordinates", authorization, stateController.find_state_by_coordinates)
 
 export default stateRouter;

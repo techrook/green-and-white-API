@@ -84,6 +84,19 @@ class StateController{
             res.status(404).json({message: 'no states found'});
         }
     }
+
+    public find_state_by_coordinates = async(req: Request, res: Response, next: NextFunction) =>{
+        const longitude = req.body.longitude
+        const latitude = req.body.latitude
+
+        console.log(longitude)
+        try {
+            const state = await stateService.find_state_by_coord({longitude, latitude})
+            res.status(202).json({data: state})
+        } catch (error) {
+            res.status(404).json({message: 'no state found'});
+        }
+    }
 }
 
 export default StateController;
