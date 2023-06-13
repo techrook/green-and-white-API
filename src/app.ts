@@ -1,6 +1,7 @@
-import { NextFunction, Request, Response } from 'express';
+import {  Request, Response } from 'express';
 import { ErrorMiddleware } from './middlewares/error.middleware'; 
 import  connect  from './config/db.config';
+import {RedisConnect} from './config/redis.config';
 import userAuthRouter from './routes/userAuth.route';
 import regionRouter from './routes/region.route';
 import stateRouter from './routes/state.route';
@@ -14,6 +15,7 @@ import cors from 'cors';
 require('dotenv').config();
 
 connect();
+RedisConnect();
 const app = express();
 
 const limiter = rateLimit({
