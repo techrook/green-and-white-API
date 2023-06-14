@@ -215,7 +215,7 @@ class StateController {
       }
       const state = await stateService.find_state_by_coord({
         longitude,
-        latitude,
+        latitude
       });
       redis.set(cacheKey, JSON.stringify(state));
       res.status(202).json({ data: state });
@@ -223,6 +223,23 @@ class StateController {
       res.status(404).json({ message: "no state found" });
     }
   };
+
+  public update_state = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const id = req.params.id
+    const updateData = req.body
+    try {
+      const updated_state = await stateService.update_state({id, updateData})
+      res.status(202).json({ data: updated_state });
+    } catch (error) {
+      res.status(404).json({ message: "no state found" });
+    }
+
+    
+  }
 }
 
 export default StateController;

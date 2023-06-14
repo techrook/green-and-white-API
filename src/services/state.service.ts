@@ -90,6 +90,12 @@ class StateService{
                 throw new HttpException(404, `enter correct coordinates`);
             }
     }
+    public async update_state({id, updateData}){
+        if(!id) throw new HttpException(404, `enter state id`);
+        if(!updateData) throw new HttpException(400, `no update data`);
+        const updatedState = await STATE.findByIdAndUpdate((id), {updateData})
+        return updatedState
+    }
 }
 
 
