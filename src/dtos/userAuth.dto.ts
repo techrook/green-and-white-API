@@ -1,4 +1,4 @@
-import { IsEmail, IsString, IsNotEmpty, MinLength, MaxLength } from 'class-validator';
+import {  IsString, IsNotEmpty, MinLength, MaxLength } from 'class-validator';
 import { Trim } from "class-sanitizer";
 
 export class SignUpUserDto {

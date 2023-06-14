@@ -26,7 +26,7 @@ class UserAuth{
 
         const apikey = genAPIKey(15)
         const updateUserKey = await USER.findByIdAndUpdate((findUser._id),{API_KEY: apikey});
-        const updateKeyUseage = await USER.findByIdAndUpdate((findUser._id), {max_key_useage: 30})
+        const updateKeyUseage = await USER.findByIdAndUpdate((findUser._id), {max_key_useage: 300})
 
 
         return apikey

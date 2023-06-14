@@ -26,7 +26,7 @@ export interface User extends mongoose.Document {
     },
     max_key_useage:{
       type: Number,
-      default: 30
+      default: 300
     }
   })
 
