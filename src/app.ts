@@ -1,6 +1,5 @@
 import {  Request, Response } from 'express';
 import { ErrorMiddleware } from './middlewares/error.middleware'; 
-import  connect  from './config/db.config';
 import {RedisConnect} from './config/redis.config';
 import userAuthRouter from './routes/userAuth.route';
 import regionRouter from './routes/region.route';
@@ -14,7 +13,6 @@ import cors from 'cors';
 
 require('dotenv').config();
 
-connect();
 RedisConnect();
 const app = express();
 
@@ -25,13 +23,14 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
 
-// Apply the rate limiting middleware to all requests
+
 
 //middlewares
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+	// Apply the rate limiting middleware to all requests
 app.use(limiter)
 
 
@@ -40,7 +39,7 @@ app.get("/", ( req: Request, res: Response) => {
 })
 
 //routes
-app.use('/user', userAuthRouter);
+app.use('/api/user', userAuthRouter);
 app.use('/regions', regionRouter);
 app.use('/states', stateRouter);
 app.use(ErrorMiddleware)
