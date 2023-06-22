@@ -1,6 +1,7 @@
+require('dotenv').config();
+
 import {  Request, Response } from 'express';
 import { ErrorMiddleware } from './middlewares/error.middleware'; 
-import {RedisConnect} from './config/redis.config';
 import userAuthRouter from './routes/userAuth.route';
 import regionRouter from './routes/region.route';
 import stateRouter from './routes/state.route';
@@ -11,11 +12,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 
-require('dotenv').config();
 
-RedisConnect();
+
 const app = express();
-
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
@@ -41,7 +40,7 @@ app.get("/", ( req: Request, res: Response) => {
 //routes
 app.use('/api/user', userAuthRouter);
 app.use('/regions', regionRouter);
-app.use('/states', stateRouter);
+app.use('/api/states', stateRouter);
 app.use(ErrorMiddleware)
 
 
