@@ -61,15 +61,35 @@ describe("state", () => {
   //add state
   it("should add state", async () => {
     const stateInput = {
-      name: "teststate",
-      capital: "testcapital",
-      LGA: ["LGA1", "LGA2", "LGA3", "LGA4", "LGA5"],
-      latitude: 6.364738,
-      longitude: 7.46883,
-      region: "6462b53192eb5caec51d99c0",
-      number_of_LGA: 5,
+      name: "Lagos",
+      capital: "Ikeja ",
+      LGA: [
+        "Alimosho",
+        "Ajeromi-Ifelodun",
+        "Kosofe",
+        "Mushin",
+        "Oshodi-Isolo",
+        "Ojo",
+        "Ikorodu ",
+        "Surulere",
+        "Agege",
+        "Ifako-Ijaiye",
+        "Somolu",
+        "Amuwo-Odofin",
+        "Lagos Mainland",
+        "Ikeja",
+        "Eti-Osa",
+        "Badagry",
+        "Apapa",
+        "Lagos Island",
+        "Epe",
+        "Ibeju-Lekki",
+      ],
+      latitude: 6.5227,
+      longitude: 3.6218,
+      region: "6462b5c892eb5caec51d99c4",
+      number_of_LGA: 20,
     };
-
     const { statusCode, body } = await supertest(app)
       .post("/api/states/")
       .query({ username: "lebron" })
@@ -117,39 +137,42 @@ describe("state", () => {
       number_of_LGA: 5,
     });
 
+    const states = await STATE.find();
+
     const { statusCode, body } = await supertest(app)
       .get("/api/states/")
       .query({ username: "lebron" })
       .set("Accept", "application/json")
-      .set({ "x-api-key": `${apikey}` });
-  
-    expect(statusCode).toBe(202);
-    // expect(body.data).toHaveLength(2)
-    // expect(body.data).toHaveProperty(["name"]);
-    // expect(body.data).toHaveProperty(["capital"]);
-    // expect(body.data).toHaveProperty(["LGA"]);
-    // expect(body.data).toHaveProperty(["latitude"]);
-    // expect(body.data).toHaveProperty(["longitude"]);
-    // expect(body.data).toHaveProperty(["number_of_LGA"]);
+      .set({ "x-api-key": `${apikey}`, Accept: "application/json" });
+
+      expect(statusCode).toBe(202);
+      expect(body.data).toHaveLength(4); // Adjust the expected length based on your data
+      expect(body.data[0]).toHaveProperty('name');
+      expect(body.data[0]).toHaveProperty('capital');
+      expect(body.data[0]).toHaveProperty('LGA');
+      expect(body.data[0]).toHaveProperty('latitude');
+      expect(body.data[0]).toHaveProperty('longitude');
+      expect(body.data[0]).toHaveProperty('number_of_LGA');
   });
   // get a state
   it("should get a state", async () => {
+    
     const state = await stateService.addState(stateInput);
     const { statusCode, body } = await supertest(app)
       .get("/api/states/state")
-      .query({ username: "lebron" })
       .query({ state: `${state.name}` })
-      // .set("Accept", "application/json")
+      .query({ username: "lebron" })
+      .set("Accept", "application/json")
       .set({ "x-api-key": `${apikey}`, Accept: "application/json" });
 
+      console.log(state)
     expect(statusCode).toBe(202);
-    expect(body.message).toBe("no state found")
-    // expect(body.data).toHaveProperty(["name"]);
-    // expect(body.data).toHaveProperty(["capital"]);
-    // expect(body.data).toHaveProperty(["LGA"]);
-    // expect(body.data).toHaveProperty(["latitude"]);
-    // expect(body.data).toHaveProperty(["longitude"]);
-    // expect(body.data).toHaveProperty(["number_of_LGA"]);
+    expect(body.data).toHaveProperty(["name"]);
+    expect(body.data).toHaveProperty(["capital"]);
+    expect(body.data).toHaveProperty(["LGA"]);
+    expect(body.data).toHaveProperty(["latitude"]);
+    expect(body.data).toHaveProperty(["longitude"]);
+    expect(body.data).toHaveProperty(["number_of_LGA"]);
   });
   // get states by region
   //Northwest states

@@ -19,17 +19,17 @@ class StateController {
     next: NextFunction
   ) => {
     try {
-      const cacheKey = `states:allStates`;
-      const cachedOrder = await redis.get(cacheKey);
-      if (cachedOrder) {
-        // Cache hit
-        return res.status(202).json({ data: JSON.parse(cachedOrder) });
-      }
+      // const cacheKey = `states:allStates`;
+      // const cachedOrder = await redis.get(cacheKey);
+      // if (cachedOrder) {
+      //   // Cache hit
+      //   return res.status(202).json({ data: JSON.parse(cachedOrder) });
+      // }
 
       // Cache miss
       const states = await stateService.getAllState();
 
-      redis.set(cacheKey, JSON.stringify(states));
+     //redis.set(cacheKey, JSON.stringify(states));
       return res.status(202).json({ data: states });
     } catch (error) {
       return res.status(404).json({ message: "no states found" });
@@ -42,15 +42,15 @@ class StateController {
     next: NextFunction
   ) => {
     try {
-        const cacheKey = `state:${req.query.state}`;
-      const cachedOrder = await redis.get(cacheKey);
-      if (cachedOrder) {
-        // Cache hit
-        return res.status(202).json({ data: JSON.parse(cachedOrder) });
-      }
+      //   const cacheKey = `state:${req.query.state}`;
+      // const cachedOrder = await redis.get(cacheKey);
+      // if (cachedOrder) {
+      //   // Cache hit
+      //   return res.status(202).json({ data: JSON.parse(cachedOrder) });
+      // }
 
       const state = await stateService.get_A_state(req.query.state);
-      redis.set(cacheKey, JSON.stringify(state));
+     // redis.set(cacheKey, JSON.stringify(state));
       return res.status(202).json({ data: state });
     } catch (error) {
       return res.status(404).json({ message: "no state found" });
