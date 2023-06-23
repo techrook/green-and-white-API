@@ -3,7 +3,7 @@ import mongoose, { Schema, Types } from "mongoose";
 export interface State extends mongoose.Document {
   name: string;
   capital: string;
-  LGA: object[];
+  LGA: string[];
   latitude: number;
   longitude: number;
   region: Types.ObjectId;

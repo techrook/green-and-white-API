@@ -2,7 +2,7 @@ import STATE,{State} from "../models/states.model";
 import { HttpException } from "../exceptions/httpException";
 
 class StateService{
-    public async addState(stateData: State){
+    public async addState(stateData){
         if(!stateData) throw new HttpException(404, `enter  state data`);
         const newState = await STATE.create(stateData)
 

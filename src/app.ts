@@ -40,7 +40,7 @@ app.get("/", ( req: Request, res: Response) => {
 //routes
 app.use('/api/user', userAuthRouter);
 app.use('/regions', regionRouter);
-app.use('/api/states', stateRouter);
+app.use('/api/states/', stateRouter);
 app.use(ErrorMiddleware)
 
 
