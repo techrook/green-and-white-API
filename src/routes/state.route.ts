@@ -3,13 +3,13 @@ import StateController from "../controller/state.controller";
 import authorization from "../middlewares/auth.middleware";
 import { stateDto } from "../dtos/state.dto";
 import { ValidationMiddleware } from "../middlewares/validator.middleware";
-
+import cacheMiddleware from "../middlewares/caching.middleware";
 const stateController = new StateController();
 const stateRouter = Router();
 
 stateRouter.post("/", ValidationMiddleware(stateDto), stateController.addState);
-stateRouter.get("/", authorization, stateController.getAllState);
-stateRouter.get("/state", authorization, stateController.get_A_state);
+stateRouter.get("/", authorization,cacheMiddleware, stateController.getAllState);
+stateRouter.get("/state", authorization,cacheMiddleware, stateController.get_A_state);
 stateRouter.get(
   "/northwest",
   authorization,
