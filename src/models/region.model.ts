@@ -1,16 +1,16 @@
-import mongoose, { Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 export interface Region extends mongoose.Document {
-    name: string;
-  }
+  name: string;
+}
 
-  const RegionSchema : Schema<Region> = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-  })
+const RegionSchema: Schema<Region> = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+});
 
-  const REGION = mongoose.model<Region>("REGION", RegionSchema);
+const REGION = mongoose.model<Region>("REGION", RegionSchema);
 
-  export default REGION;
+export default REGION;

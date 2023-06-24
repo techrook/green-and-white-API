@@ -25,7 +25,6 @@ class StateController {
       redis.set(cacheKey, JSON.stringify(states));
 
       return res.status(202).json({ data: states });
-
     } catch (error) {
       return res.status(404).json({ message: "no states found" });
     }
@@ -53,7 +52,6 @@ class StateController {
     next: NextFunction
   ) => {
     try {
-
       const cacheKey = `states:NorthWest`;
       const cachedOrder = await redis.get(cacheKey);
       if (cachedOrder) {
@@ -127,7 +125,7 @@ class StateController {
         // Cache hit
         return res.status(202).json({ data: JSON.parse(cachedOrder) });
       }
-      
+
       const states = await stateService.get_southeast_states();
       redis.set(cacheKey, JSON.stringify(states));
       res
@@ -150,8 +148,7 @@ class StateController {
         // Cache hit
         return res.status(202).json({ data: JSON.parse(cachedOrder) });
       }
-      
-      
+
       const states = await stateService.get_southsouth_states();
       redis.set(cacheKey, JSON.stringify(states));
       res
@@ -174,9 +171,7 @@ class StateController {
         // Cache hit
         return res.status(202).json({ data: JSON.parse(cachedOrder) });
       }
-      
-      
-      
+
       const states = await stateService.get_southwest_states();
       redis.set(cacheKey, JSON.stringify(states));
       res
@@ -205,7 +200,7 @@ class StateController {
       }
       const state = await stateService.find_state_by_coord({
         longitude,
-        latitude
+        latitude,
       });
       redis.set(cacheKey, JSON.stringify(state));
       res.status(202).json({ data: state });
@@ -219,17 +214,15 @@ class StateController {
     res: Response,
     next: NextFunction
   ) => {
-    const id = req.params.id
-    const updateData = req.body
+    const id = req.params.id;
+    const updateData = req.body;
     try {
-      const updated_state = await stateService.update_state({id, updateData})
+      const updated_state = await stateService.update_state({ id, updateData });
       res.status(202).json({ data: updated_state });
     } catch (error) {
       res.status(404).json({ message: "no state found" });
     }
-
-    
-  }
+  };
 }
 
 export default StateController;

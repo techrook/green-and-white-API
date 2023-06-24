@@ -8,8 +8,18 @@ const stateController = new StateController();
 const stateRouter = Router();
 
 stateRouter.post("/", ValidationMiddleware(stateDto), stateController.addState);
-stateRouter.get("/", authorization,cacheMiddleware, stateController.getAllState);
-stateRouter.get("/state", authorization,cacheMiddleware, stateController.get_A_state);
+stateRouter.get(
+  "/",
+  authorization,
+  cacheMiddleware,
+  stateController.getAllState
+);
+stateRouter.get(
+  "/state",
+  authorization,
+  cacheMiddleware,
+  stateController.get_A_state
+);
 stateRouter.get(
   "/northwest",
   authorization,
