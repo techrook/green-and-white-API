@@ -10,7 +10,7 @@ class StateController {
         .status(201)
         .json({ data: addedState, message: `${addedState.name} added` });
     } catch (error) {
-      res.status(406).json({ message: "state not added" });
+      res.status(400).json({ message: "state not added" });
     }
   };
   public getAllState = async (

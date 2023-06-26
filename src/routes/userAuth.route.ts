@@ -40,7 +40,35 @@ userAuthRouter.post(
   ValidationMiddleware(SignUpUserDto),
   userController.signUp
 );
-
+/**
+ * @openapi
+ * /api/user/login:
+ *   post:
+ *     tags:
+ *       - User
+ *     summary: login user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 default: c.ronaldo
+ *               password:
+ *                 type: string
+ *                 default: greatestofalltime
+ *             required:
+ *               - username
+ *               - password
+ *     responses:
+ *       202:
+ *         description: Success
+ *       404:
+ *         description: not found
+ */
 userAuthRouter.post(
   "/login",
   ValidationMiddleware(SignUpUserDto),

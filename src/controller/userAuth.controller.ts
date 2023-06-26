@@ -17,7 +17,7 @@ class UserController {
       });
       res.status(201).json({ data: signUpUser, message: "User signed up" });
     } catch (error) {
-      res.status(400).json({ message: "User not signed up " });
+      res.status(404).json({ message: "User not signed up " });
     }
   };
 
