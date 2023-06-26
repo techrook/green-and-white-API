@@ -3,7 +3,7 @@ dotenv.config();
 
 declare var process: {
   env: {
-    PORT: string;
+    PORT: number;
     MONGODB_URL: string;
     SECRET_KEY: string;
     JWT_LIFESPAN: string;

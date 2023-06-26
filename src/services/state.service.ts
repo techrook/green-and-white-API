@@ -3,7 +3,9 @@ import { HttpException } from "../exceptions/httpException";
 
 class StateService {
   public async addState(stateData) {
-    if (!stateData) throw new HttpException(404, `enter  state data`);
+    if (!stateData){
+      throw new HttpException(404, `enter  state data`)
+    } ;
     const newState = await STATE.create(stateData);
 
     return newState;

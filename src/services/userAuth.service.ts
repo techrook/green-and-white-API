@@ -7,7 +7,9 @@ class UserAuth {
   public async signUp({ username, password, API_KEY }) {
     const findUser = await USER.findOne({ username: username });
 
-    if (findUser) throw new HttpException(409, `${username} already exist.`);
+    if (findUser){
+      throw new HttpException(409, `${username} already exist.`);
+    } 
 
     const newUser = await USER.create({ username, password, API_KEY });
 
