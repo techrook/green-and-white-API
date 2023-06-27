@@ -154,31 +154,169 @@ stateRouter.get(
   cacheMiddleware,
   stateController.get_A_state
 );
+/**
+* @openapi
+*  /api/states/northwest:
+*  get:
+*     tags:
+*     - States
+*     summary: Get all the  states in northwest region of nigeria
+*     security:
+*       - x-api-key: []
+*     parameters:
+*       - in: query
+*         name: username
+*         schema:
+*           type: string
+*           default: c.ronaldo1
+*         required: true
+*         description: User's username
+*     responses:
+*       202:
+*         description: Success
+*       404:
+*         description: states not found
+*/
 stateRouter.get(
   "/northwest",
   authorization,
   stateController.get_NorthWest_states
 );
+/**
+* @openapi
+*  /api/states/northcentral:
+*  get:
+*     tags:
+*     - States
+*     summary: Get all the states in northcentral region of nigeria
+*     security:
+*       - x-api-key: []
+*     parameters:
+*       - in: query
+*         name: username
+*         schema:
+*           type: string
+*           default: c.ronaldo1
+*         required: true
+*         description: User's username
+*     responses:
+*       202:
+*         description: Success
+*       404:
+*         description: states not found
+*/
 stateRouter.get(
   "/northcentral",
   authorization,
   stateController.get_Northcentral_states
 );
+/**
+* @openapi
+*  /api/states/northeast:
+*  get:
+*     tags:
+*     - States
+*     summary: Get all the states in northeast region of nigeria
+*     security:
+*       - x-api-key: []
+*     parameters:
+*       - in: query
+*         name: username
+*         schema:
+*           type: string
+*           default: c.ronaldo1
+*         required: true
+*         description: User's username
+*     responses:
+*       202:
+*         description: Success
+*       404:
+*         description: states not found
+*/
 stateRouter.get(
   "/northeast",
   authorization,
   stateController.get_Northeast_states
 );
+/**
+* @openapi
+*  /api/states/southeast:
+*  get:
+*     tags:
+*     - States
+*     summary: Get all the states in southeast region of nigeria
+*     security:
+*       - x-api-key: []
+*     parameters:
+*       - in: query
+*         name: username
+*         schema:
+*           type: string
+*           default: c.ronaldo1
+*         required: true
+*         description: User's username
+*     responses:
+*       202:
+*         description: Success
+*       404:
+*         description: states not found
+*/
 stateRouter.get(
   "/southeast",
   authorization,
   stateController.get_southeast_states
 );
+/**
+* @openapi
+*  /api/states/southsouth:
+*  get:
+*     tags:
+*     - States
+*     summary: Get all the states in southsouth region of nigeria
+*     security:
+*       - x-api-key: []
+*     parameters:
+*       - in: query
+*         name: username
+*         schema:
+*           type: string
+*           default: c.ronaldo1
+*         required: true
+*         description: User's username
+*     responses:
+*       202:
+*         description: Success
+*       404:
+*         description: states not found
+*/
 stateRouter.get(
   "/southsouth",
   authorization,
   stateController.get_southsouth_states
 );
+/**
+* @openapi
+*  /api/states/southwest:
+*  get:
+*     tags:
+*     - States
+*     summary: Get all the states in southwest region of nigeria
+*     security:
+*       - x-api-key: []
+*     parameters:
+*       - in: query
+*         name: username
+*         schema:
+*           type: string
+*           default: c.ronaldo1
+*         required: true
+*         description: User's username
+*     responses:
+*       202:
+*         description: Success
+*       404:
+*         description: states not found
+*/
 stateRouter.get(
   "/southwest",
   authorization,

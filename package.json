@@ -2,6 +2,7 @@
   "name": "green-and-white-api",
   "version": "1.0.0",
   "description": "Green and white an API for geographic information of giant of Africa, Nigeria  ",
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
