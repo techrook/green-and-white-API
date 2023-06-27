@@ -1,4 +1,5 @@
-require("dotenv").config();
+import * as dotenv from "dotenv";
+dotenv.config();
 
 import { Request, Response } from "express";
 import { ErrorMiddleware } from "./middlewares/error.middleware";
@@ -19,7 +20,7 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-//middlewares
+// Middlewares
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
@@ -33,7 +34,7 @@ app.get("/", (req: Request, res: Response) => {
   );
 });
 
-//routes
+// Routes
 app.use("/api/user", userAuthRouter);
 app.use("/regions", regionRouter);
 app.use("/api/states/", stateRouter);
