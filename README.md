@@ -120,13 +120,13 @@ signup successful
 - Responses
 
 Success
+> **Note:** This endpoint is in case your API key usage runs out. When you login, it regenerates a new API key.
 ```
 {
     "APIKEY": " 1mqEG6VlcBsV8i1",
     "message": "User Logged in"
 }
 ```
--this endpoint is incase your APIKEY useage runs out when you login it regenerates a new APIKEY.
 ---
 ### STATE (add state)
 
