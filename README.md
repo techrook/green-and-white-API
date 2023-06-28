@@ -1,37 +1,40 @@
-# green and white Api
-You want to come to Nigeria, but you do not know anything about Nigeria? This API provides geographical data about Nigeria, including states, regions, and local government areas.
+# Green and White API
 
----
-## features
-1. Authentication and Authorization:- some the enpoints of the API requires authentication to perform its service. so to use this endpoint signup and login then use the provide APIKEY for authorization.
-2. General APIs:- you can get datas of all the states in Nigeria, data of a particular state , data of states in a particular region or geopolitical zone and you can search for a state using its coordinates (longitude and latitude)
+Welcome to the Green and White API! This API provides geographical data about Nigeria, including states, regions, and local government areas.
 
-## Extra features
--caching and rate limiting for higher performance 
-- endpoints are carefully tested.
-- the API is also well documented(https://greenandwhite.onrender.com/docs)
----
+## Features
+
+1. Authentication and Authorization: Some of the endpoints of the API require authentication to perform their services. To use these endpoints, sign up and log in, and then use the provided API key for authorization.
+
+2. General APIs: Retrieve data for all states in Nigeria, data of a particular state, data of states in a particular region or geopolitical zone, and search for a state using its coordinates (longitude and latitude).
+
+## Extra Features
+
+- Caching and rate limiting for higher performance.
+- Endpoints are carefully tested.
+- The API is also well-documented. [Documentation Link](https://greenandwhite.onrender.com/docs)
+
 ## Setup
-- tools(Node, mongodb, typescript, express, redis , jest,e.t.c)
-- pull this repo
-- cd green-and-white-API
-- npm install
-- update env with 
-example.env
-```
-NODE_ENV=development
-PORT = 8080
-MONGODB_URL= enter your mongoDB URL
-SECRET_KEY = JCNBDU498BFINE849 (any random characters)
-JWT_LIFESPAN= '4h'
-REDIS_USERNAME = enter your  redis cloud username
-REDIS_PORT = DB port 
-REDIS_HOST = your redis Host
-REDIS_PASSWORD= your redis password
-```
-- run `npm install` for dependencies
-- run `npm run start:dev`
----
+
+To set up the Green and White API, follow these steps:
+
+1. Install the required tools: Node, MongoDB, TypeScript, Express, Redis, Jest, etc.
+2. Clone this repository.
+3. Navigate to the `green-and-white-API` directory.
+4. Update the environment variables using the provided example.env file:
+    ```
+    NODE_ENV=development
+    PORT=8080
+    MONGODB_URL=<enter your MongoDB URL>
+    SECRET_KEY=JCNBDU498BFINE849 (any random characters)
+    JWT_LIFESPAN='4h'
+    REDIS_USERNAME=<enter your Redis Cloud username>
+    REDIS_PORT=<Redis database port>
+    REDIS_HOST=<your Redis host>
+    REDIS_PASSWORD=<your Redis password>
+    ```
+5. Run `npm install` to install the dependencies.
+6. Run `npm run start:dev` to start the API.
 
 ## Base URL
 - https://greenandwhite.onrender.com
@@ -71,8 +74,6 @@ REDIS_PASSWORD= your redis password
 
 ## APIs
 
-
-### registar User
 
 ### Signup User
 
