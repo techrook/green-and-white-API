@@ -1003,6 +1003,7 @@ The request body should be a JSON object with the following properties:
   "longitude": 9.9992,
   "latitude": 10.7761
 }
+```
 ---
 
 ## Contributor
