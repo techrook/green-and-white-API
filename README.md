@@ -981,6 +981,30 @@ status code : 202
 ```
 ---
 
+
+### STATE (Get a particular state in Nigeria by its coordinates [longitude & latitude])
+
+- **URL:** `/api/states/coordinates`
+- **Method:** POST
+- **Tags:** States
+
+#### Request Parameters
+
+| Parameter  | Type   | Required | Default    | Description       |
+|------------|--------|----------|------------|-------------------|
+| username   | string | true     | c.ronaldo1 | User's username   |
+
+#### Request Body
+
+The request body should be a JSON object with the following properties:
+
+```json
+{
+  "longitude": 9.9992,
+  "latitude": 10.7761
+}
+---
+
 ## Contributor
 
 - Itohowo Monday :
