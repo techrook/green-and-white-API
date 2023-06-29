@@ -2,14 +2,7 @@ import STATE, { State } from "../models/states.model";
 import { HttpException } from "../exceptions/httpException";
 
 class StateService {
-  public async addState(stateData) {
-    if (!stateData){
-      throw new HttpException(404, `enter  state data`)
-    } ;
-    const newState = await STATE.create(stateData);
 
-    return newState;
-  }
   public async getAllState() {
     const allState = await STATE.find().populate("region", { name: 1 });
 

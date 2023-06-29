@@ -3,16 +3,6 @@ import StateService from "../services/state.service";
 import { redis } from "../config/redis.config";
 const stateService = new StateService();
 class StateController {
-  public addState = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const addedState = await stateService.addState(req.body);
-      res
-        .status(201)
-        .json({ data: addedState, message: `${addedState.name} added` });
-    } catch (error) {
-      res.status(400).json({ message: "state not added" });
-    }
-  };
   public getAllState = async (
     req: Request,
     res: Response,
